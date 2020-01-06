@@ -3,7 +3,7 @@
 # include <string>
 
 using namespace std;
-/*
+
 class persona{
 	private:
 		string nombre;
@@ -11,27 +11,6 @@ class persona{
 	public:
 		persona(string,int);
 		void mostrar_datos_persona();
-
-};
-*/
-
-
-class grupo{
-	private:
-		class persona{
-			public:
-				string nombre;
-				int edad;
-			public:
-				persona(string,int);
-				//void mostrar_datos_persona();
-		};
-
-		persona p;
-		
-	public:
-		grupo(string,int);
-		//void mostrar_grupo();
 
 };
 
@@ -44,16 +23,12 @@ void persona::mostrar_datos_persona(){
 	cout << "nombre: " << nombre << endl;
 	cout << "edad: " << edad << endl;
 }
-grupo::grupo(string nombre, int edad){
-	p = persona(nombre,edad);
-}
 
-void grupo::mostrar_grupo(){
-	p.mostrar_datos_persona();
-}
+
 
 int main(){
-	grupo g = grupo("izi",20);	
+	persona p = persona("izi",20);
+	p.mostrar_datos_persona();	
 
 	return 0;
 }
