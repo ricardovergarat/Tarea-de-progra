@@ -5,25 +5,52 @@
 using namespace std;
 
 // ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-/*
+
+/*                                estrucutura de datos
+
 
 struct nodo{
-	conferencia una_conferencia;
-	nodo *sgt;
+    int numero;
+    nodo *sgt;
 };
 
-void agregar_elementos(nodo *&lista, conferencia c){
-	nodo *espacio = new nodo();
-	espacio -> una_conferencia = c;
-	cout << espacio -> una_conferencia << endl;
-	espacio -> sgt = lista;
-	cout << espacio-> sgt << endl;
-	lista = espacio;
 
+void insertar_elementos(nodo *&lista, int n){
+    nodo *espacio_memoria = new nodo();
+    espacio_memoria -> numero = n;
+
+    nodo *aux = lista;
+    nodo *aux2;
+
+    while ( (aux != NULL) && (aux -> numero < n) ){
+        aux2 = aux;
+        aux = aux -> sgt;
+    }
+
+    if (lista == aux){
+        lista = espacio_memoria;
+    }else{
+        aux2 -> sgt = espacio_memoria;
+    }
+
+    espacio_memoria -> sgt = aux;
 }
 
+void mostrar_lista(nodo *lista){
+    nodo *actual = new nodo();
+    actual = lista;
+    while (actual != NULL){
+        cout << actual -> numero << endl;
+        actual = actual -> sgt;
+        
+    }
+}
+
+
 */
+
 // ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
 
 
 // ----------------------------------------------------------------------------------------------------------------------
@@ -52,20 +79,48 @@ void persona::mostrar_datos_persona(){
 class revisor : public persona{
 	public:
 		revisor(string,string,string);
+		//void evaluar(articulo);
+		//void comentar(articulo);
+
 };
 
 revisor::revisor(string _nombre, string _afiliacion, string _correo):persona(_nombre,_afiliacion,_correo){
 
 }
 
+/*
+
+void revisor::evaluar(articulo *&un_articulo){
+	int una_nota;
+	cout << "Ingrese la nota del articulo: " << endl;
+	cin >> una_nota;
+	un_articulo.nota = una_nota;
+}
+
+void revisor::comentar(articulo *&un_articulo){
+	cout << "Ingrese el comentario del articulo" << endl;
+	cout << "Presione enter para terminar el comentario" endl;
+}
+
+*/
+
 class autor : public persona{
 	public:
 		autor(string,string,string);
+		void enviar_articulo();
 };
 
 autor::autor(string _nombre, string _afiliacion, string _correo):persona(_nombre,_afiliacion,_correo){
 
 }
+
+
+
+void autor::enviar_articulo(){
+	cout << "Se a enviado el articulo" << endl;
+}
+
+
 
 class chair : public persona{
 	public:
@@ -82,11 +137,13 @@ class articulo{
 		string titulo;
 		string resumen;
 		// lista autoro corespondiente o autores corespondientes
+		// autores[n] *autores;
+	public:
 		int nota;
-		//string comentarios;
+		string comentarios;
 	public:
 		articulo(string,string);
-		void mostrararticulo();
+		void mostrar_articulo();
 		//void mostrar_articulo();
 };
 
@@ -95,7 +152,7 @@ articulo::articulo(string _titulo, string _resumen){
 	resumen = _resumen;
 }
 
-void articulo::mostrararticulo(){
+void articulo::mostrar_articulo(){
 	cout << "Titulo: " << titulo << endl;
 	cout << "Resumen: " << resumen << endl;
 }
@@ -108,7 +165,6 @@ class conferencia{
 		string fecha_termino;
 		string pais;
 		string ciudad;
-		//articulo el_articulo;
 		/*
 		chair uno;
 		chair dos;
@@ -152,7 +208,7 @@ int main(){
 	*/
 
 	articulo a = articulo("luna de pluton","esta siendo un existo de ventas en chile, argentina, uruguai, etc");
-	//a.mostrararticulo();
+	a.mostrar_articulo();
 
 	conferencia con = conferencia("04-01-2020","07-01-2020","chile","talca");
 	con.mostrar_conferencia();
