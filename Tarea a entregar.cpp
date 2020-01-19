@@ -1,60 +1,9 @@
 # include <iostream>
 # include <fstream>
 # include <string>
+# include <vector>
 
 using namespace std;
-
-
-
-
-// ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
-/*                                estrucutura de datos
-
-
-struct nodo{
-    int numero;
-    nodo *sgt;
-};
-
-
-void insertar_elementos(nodo *&lista, int n){
-    nodo *espacio_memoria = new nodo();
-    espacio_memoria -> numero = n;
-
-    nodo *aux = lista;
-    nodo *aux2;
-
-    while ( (aux != NULL) && (aux -> numero < n) ){
-        aux2 = aux;
-        aux = aux -> sgt;
-    }
-
-    if (lista == aux){
-        lista = espacio_memoria;
-    }else{
-        aux2 -> sgt = espacio_memoria;
-    }
-
-    espacio_memoria -> sgt = aux;
-}
-
-void mostrar_lista(nodo *lista){
-    nodo *actual = new nodo();
-    actual = lista;
-    while (actual != NULL){
-        cout << actual -> numero << endl;
-        actual = actual -> sgt;
-        
-    }
-}
-
-
-*/
-
-// ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
-
 
 // ----------------------------------------------------------------------------------------------------------------------
 class persona{
@@ -111,13 +60,15 @@ class articulo{
 	private:
 		string titulo;
 		string resumen;
-		// lista autoro corespondiente o autores corespondientes
+		//string cuerpo;
+		// autor corespondinte dejar en sus_autores[0]
+		// autor *sus_autores[n]
+	public:
 		int nota;
-		//string comentarios;
+		string comentarios;
 	public:
 		articulo(string,string);
 		void mostrararticulo();
-		//void mostrar_articulo();
 };
 
 articulo::articulo(string _titulo, string _resumen){
@@ -129,8 +80,6 @@ void articulo::mostrararticulo(){
 	cout << "Titulo: " << titulo << endl;
 	cout << "Resumen: " << resumen << endl;
 }
-
-
 
 class conferencia{
 	private:
@@ -144,6 +93,11 @@ class conferencia{
 		revisor revisor_uno;
 		revisor revisor_dos;
 		revisor revisor_tres;
+		articulo el_articulo;
+		*/
+		/*
+		chair *los_chair[2];
+		revisor *los_revisores[3];
 		articulo el_articulo;
 		*/
 	public:
@@ -166,27 +120,9 @@ void conferencia::mostrar_conferencia(){
 	cout << "Ciudad: " << ciudad << endl;
 } 
 
-
-
 int main(){
-	/*
-	persona p1 = persona("Levi","cerca de la U","LEVISAPE@gmail.com");
-	p1.mostrar_datos_persona();
-	revisor r = revisor("jerman","en la U","jerman@gmail.com");
-	r.mostrar_datos_persona();
-	autor a = autor("nati","cerca de los dragones","nati@gmail.com");
-	a.mostrar_datos_persona();
-	chair c = chair("profe ricardo","nunca esta en la U","ricardobarrientos@gmail.com");
-	c.mostrar_datos_persona();
-	*/
-
-	articulo a = articulo("luna de pluton","esta siendo un existo de ventas en chile, argentina, uruguai, etc");
-	//a.mostrararticulo();
-
-	conferencia con = conferencia("04-01-2020","07-01-2020","chile","talca");
-	con.mostrar_conferencia();
-
 	
+	//conferencia *las_conferencias[n]; 
 
 	return 0;
 }
