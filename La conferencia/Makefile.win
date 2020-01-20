@@ -1,14 +1,14 @@
 # Project: La_conferencia
-# Makefile created by Dev-C++ 5.7.1
+# Makefile created by Dev-C++ 5.11
 
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o
-LINKOBJ  = main.o
-LIBS     = -L"C:/Programacion/C/Dev-Cpp/MinGW32/lib" -L"C:/Programacion/C/Dev-Cpp/MinGW32/mingw32/lib" -static-libstdc++ -static-libgcc
-INCS     = -I"C:/Programacion/C/Dev-Cpp/MinGW32/include" -I"C:/Programacion/C/Dev-Cpp/MinGW32/mingw32/include" -I"C:/Programacion/C/Dev-Cpp/MinGW32/lib/gcc/mingw32/4.8.1/include"
-CXXINCS  = -I"C:/Programacion/C/Dev-Cpp/MinGW32/include" -I"C:/Programacion/C/Dev-Cpp/MinGW32/mingw32/include" -I"C:/Programacion/C/Dev-Cpp/MinGW32/lib/gcc/mingw32/4.8.1/include" -I"C:/Programacion/C/Dev-Cpp/MinGW32/lib/gcc/mingw32/4.8.1/include/c++"
+OBJ      = main.o persona.o articulo.o revisor.o autor.o chair.o conferencia.o
+LINKOBJ  = main.o persona.o articulo.o revisor.o autor.o chair.o conferencia.o
+LIBS     = -L"C:/Programacion/Dev c++/Dev-Cpp/MinGW64/lib" -L"C:/Programacion/Dev c++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Programacion/Dev c++/Dev-Cpp/MinGW64/include" -I"C:/Programacion/Dev c++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Programacion/Dev c++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Programacion/Dev c++/Dev-Cpp/MinGW64/include" -I"C:/Programacion/Dev c++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Programacion/Dev c++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Programacion/Dev c++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = La_conferencia.exe
 CXXFLAGS = $(CXXINCS) 
 CFLAGS   = $(INCS) 
@@ -26,3 +26,21 @@ $(BIN): $(OBJ)
 
 main.o: main.cc
 	$(CPP) -c main.cc -o main.o $(CXXFLAGS)
+
+persona.o: persona.cc
+	$(CPP) -c persona.cc -o persona.o $(CXXFLAGS)
+
+articulo.o: articulo.cc
+	$(CPP) -c articulo.cc -o articulo.o $(CXXFLAGS)
+
+revisor.o: revisor.cc
+	$(CPP) -c revisor.cc -o revisor.o $(CXXFLAGS)
+
+autor.o: autor.cc
+	$(CPP) -c autor.cc -o autor.o $(CXXFLAGS)
+
+chair.o: chair.cc
+	$(CPP) -c chair.cc -o chair.o $(CXXFLAGS)
+
+conferencia.o: conferencia.cc
+	$(CPP) -c conferencia.cc -o conferencia.o $(CXXFLAGS)

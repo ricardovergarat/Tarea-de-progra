@@ -1,17 +1,16 @@
-#ifdef PERSONA_H
-#define PERSONA_H
+# ifndef PERSONA_H
+# define PERSONA_H
 
 using namespace std;
 
 class persona{
-    public:
-    	persona();
-        persona(string,string,string);
-        void mostrar_persona();
-    public:
-        string nombre;
-        string afiliacion;
-        string correo;
+	private:
+		string nombre;
+		string afiliacion;
+		string correo;
+	public:
+		persona(string Nombre,string Afiliacion, string Correo);
+		persona();
+		void mostrar_persona();
 };
-
-#endif
+# endif
