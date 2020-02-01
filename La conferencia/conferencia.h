@@ -1,7 +1,6 @@
 # ifndef CONFERENCIA_H
 # define CONFERENCIA_H
 
-# include "persona.h"
 # include "revisor.h"
 
 
@@ -13,10 +12,9 @@ class conferencia{
 		string fecha_termino;
 		string pais;
 		string ciudad;
-		persona una_persona;
 		revisor un_revisor;
 	public:
-		conferencia(string,string,string,string,persona,revisor);
+		conferencia(string,string,string,string,revisor);
 		void mostrar_conferencia();
 };
 

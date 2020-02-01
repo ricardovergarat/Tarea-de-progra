@@ -1,6 +1,5 @@
 # include <iostream>
 
-# include "persona.h"
 # include "chair.h"
 
 using namespace std;
