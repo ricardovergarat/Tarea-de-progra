@@ -20,3 +20,6 @@ void persona::mostrar_persona(){
 	cout << "correo: " << correo << endl;
 }
 
+string persona::get_nombre(){
+	return nombre;
+}

@@ -10,12 +10,12 @@ using namespace std;
 
 class revisor : public persona{
 	public:
-		vector <articulo> articulos_para_revisar;
+		vector <articulo> articulos_resividos;
 	public:
 		revisor(string,string,string);
 		revisor();
-		void comentar(articulo&);
-		void evaluar(articulo&);
+		void comentar(int);
+		void evaluar(int);
 		void mostrar_articulos_pendientes();
 };
 

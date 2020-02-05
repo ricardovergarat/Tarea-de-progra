@@ -5,18 +5,18 @@
 
 using namespace std;
 
-conferencia::conferencia(string _fecha_inicio, string _fecha_termino, string _pais, string _ciudad,revisor _un_revisor){
+conferencia::conferencia(string _nombre,string _fecha_inicio, string _fecha_termino, string _pais, string _ciudad){
+	nombre = _nombre;
 	fecha_inicio = _fecha_inicio;
 	fecha_termino = _fecha_termino;
 	pais = _pais;
 	ciudad = _ciudad;
-	un_revisor = _un_revisor;
 }	
 
 void conferencia::mostrar_conferencia(){
+	cout << "Nombre: " << nombre << endl;
 	cout << "fecha de inicio: " << fecha_inicio << endl;
 	cout << "fecha de termino: " << fecha_termino << endl;
 	cout << "pais: " << pais << endl;
 	cout << "ciudad: " << ciudad << endl;
-	un_revisor.mostrar_persona();
 }

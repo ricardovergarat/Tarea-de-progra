@@ -12,5 +12,6 @@ class persona{
 		persona(string Nombre,string Afiliacion, string Correo);
 		persona();
 		void mostrar_persona();
+		string get_nombre();
 };
 # endif
