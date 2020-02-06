@@ -1,0 +1,83 @@
+void agregar_conferencias_falsas(vector <conferencia> &las_conferencias){
+	conferencia c("tegnologia para ciencias de la computacion","01-02-2020","099-02-2020","chile","talca");
+	conferencia c1("biologia en esfuerzo computacional","01-02-2020","099-02-2020","chile","talca");
+	conferencia c2("redes neuronales","01-02-2020","099-02-2020","chile","talca");
+	conferencia c3("Genetic Algorithm in TSP","11-05-2020","17-05-2020","chile","santiago");
+	conferencia c4("Neural Network Applied in Medicine","09-06-2020","17-06-2020","chile","Valparaiso");
+	conferencia c5("Image Recognition agro industrial","18-09-2020","24-09-2020","chile","santiago");
+	conferencia c6("Inteligencia artificial","24-10-2020","04-11-2020","peru","lima");
+	
+	chair ch("paulo gonzales","tercer piso","paulo@gmail.com");
+	chair ch1("Jerman espindola","en el laboratorio","jerman@gmail.com");
+	chair ch2("profe hugo","cercaa de la u","hugo@gmail.com");
+	chair ch3("ricardo barrientos","aqui","ricardo@gmail.com");
+	chair ch4("Jonathan palma","ni puta idea","jonathan@gmail.com");
+	chair ch5("Tony stark","en mi corazon","play_boy_millonario@gmail.com");
+	
+	revisor r("Peter parker","En el UCM","spiderman@gmail.com");
+	revisor r1("Steve rogers","En el pasadp","no_tiene_email@gmail.com");
+	revisor r2("Kakaroto","En el universo 7","blue@gmail.com");
+	revisor r3("Vegeta","En el universo 7","segundogmail.com");
+	revisor r4("Thanos","En su nave","matar_50%_@gmail.com");
+	revisor r5("Broly","Muy lejos","legendario@gmail.com");
+	
+	autor a("Python","En .py","python@gmail.com");
+	autor a1("C","En .C","Mi_antecesor_es_B@gmail.com");
+	autor a2("C++","En .CPP","evolucion@gmail.com");
+	autor a3("C#","En visual studio","Muy_lento@gmail.com");
+	autor a4("Java","i dont know","Proximamente@gmail.com");
+	autor a5("Matlab","En .mat","Matematica@gmail.com");
+	
+	c.agregar_chair(ch);
+	c.agregar_chair(ch5);
+	c.agregar_revisor(r3);
+	c.agregar_revisor(r1);
+	c.agregar_revisor(r);
+	
+	c1.agregar_chair(ch3);
+	c1.agregar_chair(ch2);
+	c1.agregar_revisor(r2);
+	c1.agregar_revisor(r1);
+	c1.agregar_revisor(r5);
+	
+	c2.agregar_chair(ch2);
+	c2.agregar_chair(ch4);
+	c2.agregar_revisor(r);
+	c2.agregar_revisor(r4);
+	c2.agregar_revisor(r5);
+	
+	c3.agregar_chair(ch);
+	c3.agregar_chair(ch5);
+	c3.agregar_revisor(r);
+	c3.agregar_revisor(r1);
+	c3.agregar_revisor(r3);
+	
+	c4.agregar_chair(ch5);
+	c4.agregar_chair(ch2);
+	c4.agregar_revisor(r);
+	c4.agregar_revisor(r2);
+	c4.agregar_revisor(r1);
+	
+	c5.agregar_chair(ch3);
+	c5.agregar_chair(ch);
+	c5.agregar_revisor(r3);
+	c5.agregar_revisor(r);
+	c5.agregar_revisor(r2);
+	
+	c6.agregar_chair(ch5);
+	c6.agregar_chair(ch);
+	c6.agregar_revisor(r3);
+	c6.agregar_revisor(r);
+	c6.agregar_revisor(r4);
+	
+	agregar_conferencia(las_conferencias,c);
+	agregar_conferencia(las_conferencias,c1);
+	agregar_conferencia(las_conferencias,c2);
+	agregar_conferencia(las_conferencias,c3);
+	agregar_conferencia(las_conferencias,c4);
+	agregar_conferencia(las_conferencias,c5);
+	agregar_conferencia(las_conferencias,c6);
+	
+	cout << "Aqui comenzaremos" << endl;
+	//ch2.mostrar_mis_conferencias(las_conferencias);
+}
