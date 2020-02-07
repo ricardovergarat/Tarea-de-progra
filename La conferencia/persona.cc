@@ -10,9 +10,7 @@ persona::persona(string _nombre, string _afiliacion, string _correo){
 	correo = _correo;
 }
 
-persona::persona(){
-	
-}
+
 
 void persona::mostrar_persona(){
 	cout << "nombre: " << nombre << endl;

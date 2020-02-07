@@ -3,6 +3,8 @@
 
 # include "chair.h"
 # include "revisor.h"
+# include "autor.h"
+# include "articulo.h"
 
 
 using namespace std;
@@ -16,12 +18,13 @@ class conferencia{
 		string ciudad;
 		vector <chair> los_chair; 
 		vector <revisor> los_revisores;
-		// vector <autor> los_autores; autor[n]
-		// vector <articulo> articulos-resividos; articulo[n]
-		// vector <articulo> articulos_finales; articulo[n]
+		vector <autor> los_autores;
+		vector <articulo> articulos_resividos;
+		vector <articulo> articulos_finales;
 	public:
 		conferencia(string,string,string,string,string);
 		void mostrar_conferencia();
+		void crear_conferencia(chair);
 		void agregar_chair(chair);
 		void mostrar_sus_chair();
 		void agregar_revisor(revisor);

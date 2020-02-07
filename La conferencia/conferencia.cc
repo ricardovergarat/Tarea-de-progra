@@ -3,6 +3,8 @@
 # include "conferencia.h"
 # include "chair.h"
 # include "revisor.h"
+# include "autor.h"
+# include "articulo.h"
 
 using namespace std;
 
@@ -22,6 +24,10 @@ void conferencia::mostrar_conferencia(){
 	cout << "ciudad: " << ciudad << endl;
 }
 
+void crear_conferencia(chair un_chair){
+	cout << "Crear conferencai" << endl;
+}
+
 void conferencia::agregar_chair(chair un_chair){
 	if ( los_chair.size() >= 2 ){
 		cout << "La conferencia ya tiene sus 2 chair" << endl;
@@ -39,9 +45,8 @@ void conferencia::mostrar_sus_chair(){
 }
 
 void conferencia::agregar_revisor(revisor un_revisor){
-	cout << "Vamos a agregar un revisor" << endl;
-	if ( los_revisores.size() >=3 ){
-		cout << "La conferencia ya tiene 3 revisores" << endl;
+	if ( los_revisores.size() >= 3 ){
+		cout << "La conferencia ya tiene sus 3 revisores" << endl;
 	}else{
 		los_revisores.push_back(un_revisor);
 	}
@@ -54,4 +59,5 @@ void conferencia::mostrar_sus_revisores(){
 		x = x + 1;
 	}
 }
+
 

@@ -9,8 +9,7 @@ class persona{
 		string afiliacion;
 		string correo;
 	public:
-		persona(string Nombre,string Afiliacion, string Correo);
-		persona();
+		persona(string,string, string);
 		void mostrar_persona();
 		string get_nombre();
 };

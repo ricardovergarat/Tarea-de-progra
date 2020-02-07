@@ -14,10 +14,6 @@ class revisor : public persona{
 		vector <articulo> articulos_revisados;
 	public:
 		revisor(string,string,string);
-		revisor();
-		void comentar(int);
-		void evaluar(int);
-		void mostrar_articulos_pendientes();
 };
 
 # endif
