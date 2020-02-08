@@ -24,10 +24,11 @@ class conferencia{
 	public:
 		conferencia(string,string,string,string,string);
 		void mostrar_conferencia();
-		void crear_conferencia(chair);
 		void agregar_chair(chair);
+		void agregar_grupo_chair(chair,chair);
 		void mostrar_sus_chair();
 		void agregar_revisor(revisor);
+		void agregar_grupo_revisor(revisor,revisor,revisor);
 		void mostrar_sus_revisores();
 };
 

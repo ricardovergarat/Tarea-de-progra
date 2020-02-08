@@ -7,7 +7,9 @@ class articulo{
 	private:
 		string titulo;
 		string resumen;
+		string cuerpo;
 	public:
+		bool aprobado;
 		int nota;
 		string comentario;
 	public:

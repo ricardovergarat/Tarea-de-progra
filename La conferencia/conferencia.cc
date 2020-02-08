@@ -24,9 +24,6 @@ void conferencia::mostrar_conferencia(){
 	cout << "ciudad: " << ciudad << endl;
 }
 
-void crear_conferencia(chair un_chair){
-	cout << "Crear conferencai" << endl;
-}
 
 void conferencia::agregar_chair(chair un_chair){
 	if ( los_chair.size() >= 2 ){
@@ -34,6 +31,11 @@ void conferencia::agregar_chair(chair un_chair){
 	}else{
 		los_chair.push_back(un_chair);
 	}
+}
+
+void conferencia::agregar_grupo_chair(chair ch1, chair ch2){
+	los_chair.push_back(ch1);
+	los_chair.push_back(ch2);
 }
 
 void conferencia::mostrar_sus_chair(){
@@ -50,6 +52,12 @@ void conferencia::agregar_revisor(revisor un_revisor){
 	}else{
 		los_revisores.push_back(un_revisor);
 	}
+}
+
+void conferencia::agregar_grupo_revisor(revisor r1, revisor r2, revisor r3){
+	los_revisores.push_back(r1);
+	los_revisores.push_back(r2);
+	los_revisores.push_back(r3);
 }
 
 void conferencia::mostrar_sus_revisores(){
