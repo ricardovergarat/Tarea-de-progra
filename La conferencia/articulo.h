@@ -13,7 +13,7 @@ class articulo{
 		int nota;
 		string comentario;
 	public:
-		articulo(string,string);
+		articulo(string,string,string);
 		void mostrar_articulo();
 };
 

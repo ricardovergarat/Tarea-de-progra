@@ -73,7 +73,10 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	
 	cout << "zona de pruebas" << endl;
 	
-	
+	vector <string> L;
+	L = a.crear_articulo();
+	articulo ar(L[0],L[1],L[2]);
+	ar.mostrar_articulo();
 }
 
 void mostrar_todas_las_conferencias(vector <conferencia> lista){
@@ -328,7 +331,7 @@ int main(){
 	
 	agregar_conferencias_falsas(las_conferencias);
 	
-	menu(las_conferencias);
+	//menu(las_conferencias);
 	
 	cout << "El programa a terminado" << endl;
 	
