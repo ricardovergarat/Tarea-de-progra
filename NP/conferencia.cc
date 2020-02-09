@@ -68,4 +68,16 @@ void conferencia::mostrar_sus_revisores(){
 	}
 }
 
+void conferencia::agregar_articulo(articulo un_articulo){
+	articulos_resividos.push_back(un_articulo);
+}
+
+void conferencia::mostrar_articulos_resividos(){
+	int x = 0;
+	while ( x < articulos_resividos.size() ){
+		articulos_resividos[x].mostrar_articulo();
+		x = x + 1;
+	}
+	
+}
 

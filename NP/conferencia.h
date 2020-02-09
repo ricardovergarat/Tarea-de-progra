@@ -30,6 +30,8 @@ class conferencia{
 		void agregar_revisor(revisor);
 		void agregar_grupo_revisor(revisor,revisor,revisor);
 		void mostrar_sus_revisores();
+		void agregar_articulo(articulo);
+		void mostrar_articulos_resividos();	
 };
 
 # endif
