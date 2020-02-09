@@ -6,27 +6,32 @@
 
 using namespace std;
 
-articulo::articulo(string _titulo, string _resumen, string _cuerpo, string _aprobado, int _nota,string _comentario){
+articulo::articulo(string _titulo, string _resumen, string _cuerpo, vector <string> _comentarios, vector <int> _notas ){
 	titulo = _titulo;
 	resumen = _resumen;
 	cuerpo = _cuerpo;
-	aprobado = _aprobado;
-	nota = _nota;
-	comentario = _comentario;
+	notas = _notas;
+	comentarios = _comentarios;
 }
 
 void articulo::mostrar_articulo(){
 	cout << "Titulo: " << titulo << endl;
 	cout << "Resumen: " << resumen << endl;
 	cout << "Cuerpo: " << cuerpo << endl;
-	cout << "Aprobado: " << aprobado << endl;
-	cout << "Comentario: " << comentario << endl;
-	cout << "Nota: " << nota << endl;
+	int x = 0;
+	while ( x < 3){
+		cout << "comentario " << x + 1 << ":" << endl;
+		cout << comentarios[x] << endl;
+		cout << "Nota " << x + 1 << ": " << notas[x] << endl;
+		x = x + 1;
+	}
+	cout << "Nota promedio: " << ( (notas[0] + notas[1] + notas[2])/3 ) << endl;
 }
-
+/*
 void articulo::agregar_autor(autor un_autor){
 	los_autores.push_back(un_autor);
 }
+
 
 void articulo::mostrar_autor_principal(){
 	if ( los_autores.size()  == 0){
@@ -35,3 +40,4 @@ void articulo::mostrar_autor_principal(){
 		cout << "Autor principal: " << los_autores[0].get_nombre() << endl;
 	}
 }
+*/

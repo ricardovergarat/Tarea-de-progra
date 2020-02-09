@@ -73,10 +73,8 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	
 	cout << "zona de pruebas" << endl;
 	
-	vector <string> L;
-	L = a.crear_articulo();
-	articulo ar(L[0],L[1],L[2]);
-	ar.mostrar_articulo();
+	
+	
 }
 
 void mostrar_todas_las_conferencias(vector <conferencia> lista){
@@ -279,6 +277,13 @@ void menu_autor(vector <conferencia> &lista){
 				case 1: mostrar_todas_las_conferencias(lista); break;
 				case 2: mis_conferencias(3,un_autor.get_nombre(),lista); break;
 				case 3: opcion = -1; system("cls"); break;
+				case 4:{
+					vector <string> datos;
+					datos = un_autor.crear_articulo();
+					articulo un_articulo(datos[0],datos[1],datos[2],datos[3],-1,datos[4]);
+					un_articulo.mostrar_articulo();
+					break;
+				}
 				default: cout << "Esa opcion no existe" << endl;
 			}
 		}else{
@@ -331,7 +336,7 @@ int main(){
 	
 	agregar_conferencias_falsas(las_conferencias);
 	
-	//menu(las_conferencias);
+	menu(las_conferencias);
 	
 	cout << "El programa a terminado" << endl;
 	

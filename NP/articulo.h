@@ -13,14 +13,13 @@ class articulo{
 		string resumen;
 		string cuerpo;
 	public:
-		string aprobado;
-		int nota;
-		string comentario;
-		vector <autor> los_autores;
+		vector <int> notas;
+		vector <string> comentarios;
+		//vector <autor> los_autores;
 	public:
-		articulo(string,string,string,string,int,string);
+		articulo(string,string,string,vector <string>,vector <int>);
 		void mostrar_articulo();
-		void agregar_autor(autor);
+		//void agregar_autor(autor);
 		void mostrar_autor_principal();
 };
 
