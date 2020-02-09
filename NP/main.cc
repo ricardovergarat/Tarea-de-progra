@@ -62,6 +62,7 @@ vector <int> notas_falsas(int nota1, int nota2, int nota3){
 }
 
 void agregar_conferencias_falsas(vector <conferencia> & lista){
+	// crear conferencias
 	conferencia c("tegnologia para ciencias de la computacion","01-02-2020","099-02-2020","chile","talca");
 	conferencia c1("biologia en esfuerzo computacional","01-02-2020","099-02-2020","chile","talca");
 	conferencia c2("redes neuronales","01-02-2020","099-02-2020","chile","talca");
@@ -70,6 +71,7 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	conferencia c5("Image Recognition agro industrial","18-09-2020","24-09-2020","chile","santiago");
 	conferencia c6("Inteligencia artificial","24-10-2020","04-11-2020","peru","lima");
 	
+	// crear chairs
 	chair ch("paulo gonzales","tercer piso","paulo@gmail.com");
 	chair ch1("Jerman espindola","en el laboratorio","jerman@gmail.com");
 	chair ch2("profe hugo","cercaa de la u","hugo@gmail.com");
@@ -77,6 +79,7 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	chair ch4("Jonathan palma","ni puta idea","jonathan@gmail.com");
 	chair ch5("Tony stark","en mi corazon","play_boy_millonario@gmail.com");
 	
+	// crear revisores
 	revisor r("Peter parker","En el UCM","spiderman@gmail.com");
 	revisor r1("Steve rogers","En el pasadp","no_tiene_email@gmail.com");
 	revisor r2("Kakaroto","En el universo 7","blue@gmail.com");
@@ -84,6 +87,7 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	revisor r4("Thanos","En su nave","matar_50%_@gmail.com");
 	revisor r5("Broly","Muy lejos","legendario@gmail.com");
 	
+	// crear autores
 	autor a("Python","En .py","python@gmail.com");
 	autor a1("C","En .C","Mi_antecesor_es_B@gmail.com");
 	autor a2("C++","En .CPP","evolucion@gmail.com");
@@ -91,13 +95,16 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	autor a4("Java","i dont know","Proximamente@gmail.com");
 	autor a5("Matlab","En .mat","Matematica@gmail.com");
 	
+	
+	// crear articulos
+	
 	vector <string> comentarios;
 	vector <int> notas;
 	comentarios = comentarios_falsos("me gustan los piratas","yo vi los piratas del caribe","no entendi un carajo pero el autor me pago");
 	notas = notas_falsas(3,5,3);
 	
-	articulo ar("piratas","texto de piratas","los piratas eran ladrones hace muchos años",comentarios,notas);
-	
+	//articulo ar("piratas","texto de piratas","los piratas eran ladrones hace muchos años",comentarios,notas);
+	/*
 	comentarios = comentarios_falsos("solo me gusta dragon ball","origen no muy bien explicado","sus datos estan bien explicados");
 	notas = notas_falsas(2,5,3);
 	articulo ar1("anime","series animadas","forma de entretenimiento creada en japon",comentarios,notas);
@@ -170,9 +177,8 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	notas = notas_falsas(3,4,3);
 	articulo ar18("calculo diferencial","introdice al calculo","explicaremos primero el teorema fundamentas del calulo",comentarios,notas);
 	
-	ar.mostrar_articulo();
-	
-	
+	*/
+	cout << "termino de creacion" << endl;
 	
 	c.agregar_grupo_chair(ch,ch5);
 	c.agregar_grupo_revisor(r3,r1,r);
@@ -194,6 +200,7 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	
 	c6.agregar_grupo_chair(ch5,ch);
 	c6.agregar_grupo_revisor(r3,r,r4);
+	
 	
 	lista.push_back(c);
 	lista.push_back(c1);

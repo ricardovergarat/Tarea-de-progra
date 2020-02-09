@@ -1,8 +1,6 @@
 # include <iostream>
-# include <vector>
 
 # include "articulo.h"
-# include "autor.h"
 
 using namespace std;
 
@@ -27,17 +25,5 @@ void articulo::mostrar_articulo(){
 	}
 	cout << "Nota promedio: " << ( (notas[0] + notas[1] + notas[2])/3 ) << endl;
 }
-/*
-void articulo::agregar_autor(autor un_autor){
-	los_autores.push_back(un_autor);
-}
 
 
-void articulo::mostrar_autor_principal(){
-	if ( los_autores.size()  == 0){
-		cout << "Este articulo no tiene ningun autor" << endl;
-	}else{
-		cout << "Autor principal: " << los_autores[0].get_nombre() << endl;
-	}
-}
-*/
