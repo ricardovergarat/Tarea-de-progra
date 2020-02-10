@@ -3,6 +3,7 @@
 
 # include <vector>
 
+# include "autor.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ class articulo{
 	public:
 		articulo(string,string,string,vector <string>,vector <int>);
 		void mostrar_articulo();
-		
+		//void agregar_autor(autor);
 };
 
 # endif

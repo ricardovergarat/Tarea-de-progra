@@ -1,5 +1,7 @@
 # ifndef CONFERENCIA_H
-# define CONFERENCIA_H		
+# define CONFERENCIA_H
+
+# include <vector>		
 
 # include "chair.h"
 # include "revisor.h"
@@ -30,8 +32,12 @@ class conferencia{
 		void agregar_revisor(revisor);
 		void agregar_grupo_revisor(revisor,revisor,revisor);
 		void mostrar_sus_revisores();
-		void agregar_articulo(articulo);
-		void mostrar_articulos_resividos();	
+		void agregar_articulo(articulo);	
+		void agregar_grupo_articulos(vector <articulo>,int,int,int,int,int,int);
+		void mostrar_articulos_resividos();
+		void agregar_articulo_final(articulo);
+		void agregar_grupo_articulos_finales(vector <articulo>,int,int);
+		void mostrar_articulos_finales();
 };
 
 # endif

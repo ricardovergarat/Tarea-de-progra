@@ -61,7 +61,7 @@ vector <int> notas_falsas(int nota1, int nota2, int nota3){
 	return notas;
 }
 
-vector <articulo> articulos_falsos(){
+vector <articulo> articulos_falsos(vector <autor> &varios_autores){
 	// crear articulos
 	vector <articulo> varios_articulos;
 	vector <string> comentarios;
@@ -70,6 +70,7 @@ vector <articulo> articulos_falsos(){
 	comentarios = comentarios_falsos("me gustan los piratas","yo vi los piratas del caribe","no entendi un carajo pero el autor me pago");
 	notas = notas_falsas(3,5,3);
 	articulo ar("piratas","texto de piratas","los piratas eran ladrones hace muchos años",comentarios,notas);
+	
 	varios_articulos.push_back(ar);
 	
 	comentarios = comentarios_falsos("solo me gusta dragon ball","origen no muy bien explicado","sus datos estan bien explicados");
@@ -166,6 +167,7 @@ vector <articulo> articulos_falsos(){
 	return varios_articulos;
 }
 
+
 void agregar_conferencias_falsas(vector <conferencia> & lista){
 	// crear conferencias
 	conferencia c("tegnologia para ciencias de la computacion","01-02-2020","099-02-2020","chile","talca");
@@ -200,34 +202,55 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	autor a4("Java","i dont know","Proximamente@gmail.com");
 	autor a5("Matlab","En .mat","Matematica@gmail.com");
 	
-	// aqui articulos
-	vector <articulo> los_articulos;
-	los_articulos = articulos_falsos();
-	c1.agregar_articulo(los_articulos[0]);
-	c1.mostrar_articulos_resividos();
+	vector <autor> varios_autores;
 	
+	varios_autores.push_back(a);
+	varios_autores.push_back(a1);
+	varios_autores.push_back(a2);
+	varios_autores.push_back(a3);
+	varios_autores.push_back(a4);
+	varios_autores.push_back(a5);
+	
+	// crear articulos
+	vector <articulo> los_articulos;
+	los_articulos = articulos_falsos(varios_autores);
+		
 	cout << "termino de creacion" << endl;
 	
 	c.agregar_grupo_chair(ch,ch5);
 	c.agregar_grupo_revisor(r3,r1,r);
+	c.agregar_grupo_articulos(los_articulos,4,13,6,8,5,2);
+	c.agregar_grupo_articulos_finales(los_articulos, 13,5);
 
 	c1.agregar_grupo_chair(ch3,ch2);
 	c1.agregar_grupo_revisor(r2,r1,r5);
+	c1.agregar_grupo_articulos(los_articulos,0,15,1,2,7,8);
+	c1.agregar_grupo_articulos_finales(los_articulos, 1,7);
 	
 	c2.agregar_grupo_chair(ch2,ch4);
 	c2.agregar_grupo_revisor(r,r4,r5);
+	c2.agregar_grupo_articulos(los_articulos,1,10,9,3,8,18);
+	c2.agregar_grupo_articulos_finales(los_articulos, 10,18);
 	
 	c3.agregar_grupo_chair(ch,ch5);
 	c3.agregar_grupo_revisor(r,r1,r3);
+	c3.agregar_grupo_articulos(los_articulos,14,5,6,17,13,11);
+	c3.agregar_grupo_articulos_finales(los_articulos, 14,11);
 	
 	c4.agregar_grupo_chair(ch5,ch2);
 	c4.agregar_grupo_revisor(r,r2,r1);
+	c4.agregar_grupo_articulos(los_articulos,18,15,13,10,5,0);
+	c4.agregar_grupo_articulos_finales(los_articulos, 15,0);
 	
 	c5.agregar_grupo_chair(ch3,ch);
 	c5.agregar_grupo_revisor(r3,r,r2);
+	c5.agregar_grupo_articulos(los_articulos,17,0,4,8,7,2);
+	c5.agregar_grupo_articulos_finales(los_articulos, 17,2);
 	
 	c6.agregar_grupo_chair(ch5,ch);
 	c6.agregar_grupo_revisor(r3,r,r4);
+	c6.agregar_grupo_articulos(los_articulos,4,10,11,18,15,12);
+	c.agregar_grupo_articulos_finales(los_articulos, 4,12);
 	
 	
 	lista.push_back(c);

@@ -25,5 +25,8 @@ void articulo::mostrar_articulo(){
 	}
 	cout << "Nota promedio: " << ( (notas[0] + notas[1] + notas[2])/3 ) << endl;
 }
-
-
+/*
+void articulo::agregar_autor(autor un_autor){
+	los_autores.push_back(un_autor);
+}
+*/

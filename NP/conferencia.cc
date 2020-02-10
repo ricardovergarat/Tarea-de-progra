@@ -72,6 +72,16 @@ void conferencia::agregar_articulo(articulo un_articulo){
 	articulos_resividos.push_back(un_articulo);
 }
 
+
+void conferencia::agregar_grupo_articulos(vector <articulo> varios_articulos,int a,int b,int c,int d,int e,int f){
+	articulos_resividos.push_back(varios_articulos[a]);
+	articulos_resividos.push_back(varios_articulos[b]);
+	articulos_resividos.push_back(varios_articulos[c]);
+	articulos_resividos.push_back(varios_articulos[d]);
+	articulos_resividos.push_back(varios_articulos[e]);
+	articulos_resividos.push_back(varios_articulos[f]);
+}
+
 void conferencia::mostrar_articulos_resividos(){
 	int x = 0;
 	while ( x < articulos_resividos.size() ){
@@ -81,3 +91,19 @@ void conferencia::mostrar_articulos_resividos(){
 	
 }
 
+void conferencia::agregar_articulo_final(articulo un_articulo){
+	articulos_finales.push_back(un_articulo);
+}
+
+void conferencia::agregar_grupo_articulos_finales(vector <articulo> varios_articulos, int a, int b){
+	articulos_finales.push_back(varios_articulos[a]);
+	articulos_finales.push_back(varios_articulos[b]);
+}
+
+void conferencia::mostrar_articulos_finales(){
+	int x = 0;
+	while ( x < articulos_finales.size() ){
+		articulos_finales[x].mostrar_articulo();
+		x = x + 1;
+	}
+}

@@ -4,6 +4,7 @@
 # include <vector>
 
 # include "persona.h"
+# include "articulo.h"
 
 using namespace std;
 
