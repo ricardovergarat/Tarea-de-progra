@@ -61,8 +61,8 @@ void articulo::actualizar_nota(int nota,int indice){
 	notas[indice] = nota;
 }
 
-/*
+
 void articulo::actualizar_aprobado(string respuesta){
 	aprobado = respuesta;
 }
-*/
+

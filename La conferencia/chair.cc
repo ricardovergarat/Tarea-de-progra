@@ -44,3 +44,25 @@ chair::chair(string _nombre, string _afiliacion, string _correo) : persona(_nomb
 	
 }
 
+string chair::aceptar_o_rechazar(){
+	string opcion;
+	bool numero;
+	int x = 0;
+	while ( x < 1 ){
+		cout << "1- Aceptar articulo" << endl;
+		cout << "2- Rechazar articulo" << endl;
+		getline(cin,opcion);
+		numero = es_numero2(opcion);
+		if ( numero == true ){
+			int elegido = convertir_a_numero2(opcion);
+			switch (elegido){
+				case 1: return "TRUE";
+				case 2: return "FALSE";
+				default: system("cls"); cout << "Esa opcion no existe" << endl;
+			}
+		}else{
+			system("cls");
+			cout << "Ingreso algo no valido" << endl;
+		}
+	}
+}

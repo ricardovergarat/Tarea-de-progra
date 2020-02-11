@@ -246,7 +246,10 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	
 	cout << "Final de la funcion" << endl;
 	
+	string note = ch2.aceptar_o_rechazar();
 	
+	los_articulos[4].actualizar_aprobado(note);
+	los_articulos[4].mostrar_articulo();
 }
 
 
