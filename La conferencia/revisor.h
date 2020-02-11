@@ -11,7 +11,7 @@ using namespace std;
 class revisor : public persona{
 	public:
 		revisor(string,string,string);
-		//string comentar();
+		string comentar();
 		//int evaluar();
 };
 

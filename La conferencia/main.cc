@@ -246,10 +246,10 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	
 	cout << "Final de la funcion" << endl;
 	
-	vector <string> note = a.crear_articulo();
-	cout << note[0] << endl;
-	cout << note[1] << endl;
-	cout << note[2] << endl;
+	string comen = r2.comentar();
+	
+	los_articulos[4].actualizar_comentario(comen,1);
+	los_articulos[4].mostrar_articulo();
 }
 
 

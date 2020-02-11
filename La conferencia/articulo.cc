@@ -51,11 +51,11 @@ void articulo::mostrar_autores(){
 void articulo::mostrar_autor_principal(){
 	cout << los_autores[0].get_nombre() << endl;
 }
-/*
+
 void articulo::actualizar_comentario(string comentario, int indice){
 	comentarios[indice] = comentario;
 }
-*/
+
 /*
 void articulo::actualizar_nota(int nota,int indice){
 	notas[indice] = nota;

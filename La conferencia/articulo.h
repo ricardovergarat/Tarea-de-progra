@@ -24,7 +24,7 @@ class articulo{
 		void agregar_grupo_autores(autor,autor,autor);
 		void mostrar_autores();
 		void mostrar_autor_principal();
-		//void actualizar_comentario(string,int);
+		void actualizar_comentario(string,int);
 		//void actualizar_nota(int,int);
 		//void actualizar_aprobado(string);
 		

@@ -43,14 +43,14 @@ int convertir_a_numero(string dato){
 revisor::revisor(string _nombre, string _afiliacion, string _correo) : persona(_nombre, _afiliacion, _correo){
 	
 }
-/*
+
 string revisor::comentar(){
 	string comentario;
 	cout << "Ingrese el comentario" << endl;
 	getline(cin,comentario);
 	return comentario;
 }
-*/
+
 /*
 int revisor::evaluar(){
 	string una_nota;

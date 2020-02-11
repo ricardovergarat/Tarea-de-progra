@@ -69,3 +69,20 @@ vector <string> autor::crear_articulo(){
 	return un_articulo;
 }
 
+void autor::notificar(string nombre_conferencia,string desicion){
+	if ( desicion == "RECHAZADO"){
+		string mensaje = "La conferencia " + nombre_conferencia + " a RECHAZADO su articulo";
+		notificaciones.push_back(mensaje);
+	}else{
+		string mensaje = "La conferencia " + nombre_conferencia + " a ACEPTADO su articulo";
+		notificaciones.push_back(mensaje);
+	}
+}
+
+void autor::mostrar_notificaciones(){
+	int x = 0;
+	while ( x < notificaciones.size() ){
+		cout << notificaciones[x] << endl;
+		x = x + 1;
+	}
+}
