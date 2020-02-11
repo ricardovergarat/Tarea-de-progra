@@ -12,7 +12,7 @@ class revisor : public persona{
 	public:
 		revisor(string,string,string);
 		string comentar();
-		//int evaluar();
+		int evaluar();
 };
 
 # endif

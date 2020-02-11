@@ -25,7 +25,7 @@ class articulo{
 		void mostrar_autores();
 		void mostrar_autor_principal();
 		void actualizar_comentario(string,int);
-		//void actualizar_nota(int,int);
+		void actualizar_nota(int,int);
 		//void actualizar_aprobado(string);
 		
 };

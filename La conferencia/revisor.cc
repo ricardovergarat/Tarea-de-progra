@@ -51,7 +51,7 @@ string revisor::comentar(){
 	return comentario;
 }
 
-/*
+
 int revisor::evaluar(){
 	string una_nota;
 	int x = 0;
@@ -75,4 +75,4 @@ int revisor::evaluar(){
 		}
 	}
 }
-*/
+
