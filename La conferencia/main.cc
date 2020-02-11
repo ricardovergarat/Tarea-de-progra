@@ -203,36 +203,50 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	c.agregar_grupo_revisores(r3,r1,r);
 	c.agregar_grupo_articulos(los_articulos,4,13,6,8,5);
 	c.agregar_grupo_articulos_finales(los_articulos[6],los_articulos[8]);
+	los_articulos[6].los_autores[0].notificar(c.nombre,"ACEPTADO");
+	los_articulos[8].los_autores[0].notificar(c.nombre,"ACEPTADO");
 	
 	c1.agregar_grupo_chair(ch3,ch2);
 	c1.agregar_grupo_revisores(r2,r1,r5);
 	c1.agregar_grupo_articulos(los_articulos,0,15,1,2,7);
 	c1.agregar_grupo_articulos_finales(los_articulos[15],los_articulos[1]);
+	los_articulos[15].los_autores[0].notificar(c1.nombre,"ACEPTADO");
+	los_articulos[1].los_autores[0].notificar(c1.nombre,"ACEPTADO");
 	
 	c2.agregar_grupo_chair(ch2,ch4);
 	c2.agregar_grupo_revisores(r,r4,r5);
 	c2.agregar_grupo_articulos(los_articulos,1,10,9,3,8);
 	c2.agregar_grupo_articulos_finales(los_articulos[10],los_articulos[3]);
+	los_articulos[10].los_autores[0].notificar(c2.nombre,"ACEPTADO");
+	los_articulos[3].los_autores[0].notificar(c2.nombre,"ACEPTADO");
 	
 	c3.agregar_grupo_chair(ch,ch1);
 	c3.agregar_grupo_revisores(r,r1,r3);
 	c3.agregar_grupo_articulos(los_articulos,14,5,6,17,13);
 	c3.agregar_grupo_articulos_finales(los_articulos[5],los_articulos[17]);
+	los_articulos[5].los_autores[0].notificar(c3.nombre,"ACEPTADO");
+	los_articulos[17].los_autores[0].notificar(c3.nombre,"ACEPTADO");
 	
 	c4.agregar_grupo_chair(ch5,ch2);
 	c4.agregar_grupo_revisores(r,r2,r1);
 	c4.agregar_grupo_articulos(los_articulos,18,15,13,10,5);
 	c4.agregar_grupo_articulos_finales(los_articulos[18],los_articulos[13]);
+	los_articulos[18].los_autores[0].notificar(c4.nombre,"ACEPTADO");
+	los_articulos[13].los_autores[0].notificar(c4.nombre,"ACEPTADO");
 	
 	c5.agregar_grupo_chair(ch3,ch);
 	c5.agregar_grupo_revisores(r3,r,r2);
 	c5.agregar_grupo_articulos(los_articulos,17,0,4,8,7);
 	c5.agregar_grupo_articulos_finales(los_articulos[0],los_articulos[4]);
+	los_articulos[0].los_autores[0].notificar(c5.nombre,"ACEPTADO");
+	los_articulos[4].los_autores[0].notificar(c5.nombre,"ACEPTADO");
 	
 	c6.agregar_grupo_chair(ch5,ch);
 	c6.agregar_grupo_revisores(r3,r,r4);
 	c6.agregar_grupo_articulos(los_articulos,4,10,11,18,15);
 	c6.agregar_grupo_articulos_finales(los_articulos[11],los_articulos[18]);
+	los_articulos[11].los_autores[0].notificar(c6.nombre,"ACEPTADO");
+	los_articulos[18].los_autores[0].notificar(c6.nombre,"ACEPTADO");
 	
 	cout << "Termino el completado" << endl;
 	
@@ -246,10 +260,7 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	
 	cout << "Final de la funcion" << endl;
 	
-	string note = ch2.aceptar_o_rechazar();
 	
-	los_articulos[4].actualizar_aprobado(note);
-	los_articulos[4].mostrar_articulo();
 }
 
 
