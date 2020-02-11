@@ -1,37 +1,46 @@
 # include <iostream>
 # include <vector>
+# include <math.h> // para convertir a numero
 
 # include "chair.h"
 
 using namespace std;
 
-chair::chair(string _nombre, string _afiliacion, string _correo) : persona(_nombre, _afiliacion, _correo){
-	
+bool es_numero2(string dato){
+	int x = 0;
+	while ( x < dato.size() ){
+		if ( isdigit(dato[x]) == 0 ){
+			return false;
+		}
+		x = x + 1;
+	}
+	return true;
 }
 
-vector <string> chair::crear_conferencia(){
-	string omitir,nombre,fecha_inicio,fecha_termino,pais,ciudad,nombre_revisor;
-	cout << "" << endl;
-	getline(cin,omitir); // por algunmotivo el primer getline no funciona, esto solo esta para que funcionen los demas
-	cout << "Ingrese el nombre de la coferencia" << endl;
-	getline(cin,nombre);
-	cout << "Ingrese la fecha de inicio 	ejemplo: 23-04-2020" << endl;
-	getline(cin,fecha_inicio);
-	cout << "Ingrese la fecah de termino	ejemplo: 30-04-2020" << endl;
-	getline(cin,fecha_termino);
-	cout << "Ingrese el pais" << endl;
-	getline(cin,pais);
-	cout << "Ingrese la ciudad" << endl;
-	getline(cin,ciudad);
-	cout << "Ingrese el nombre de un revisor" << endl;
-	getline(cin,nombre_revisor);
-	vector <string> una_conferencia;
-	una_conferencia.push_back(nombre);
-	una_conferencia.push_back(fecha_inicio);
-	una_conferencia.push_back(fecha_termino);
-	una_conferencia.push_back(pais);
-	una_conferencia.push_back(ciudad);
-	una_conferencia.push_back(nombre_revisor);
-	return una_conferencia;
+int convertir_a_numero2(string dato){
+	int x = 0;
+	int suma = 0;
+	while ( x < dato.size() ){
+		int potencia = ( dato.size() - 1 ) - x;
+		switch (dato[x]){
+			case '0': suma = suma + 0 * pow(10,potencia); break;
+			case '1': suma = suma + 1 * pow(10,potencia); break;
+			case '2': suma = suma + 2 * pow(10,potencia); break;
+			case '3': suma = suma + 3 * pow(10,potencia); break;
+			case '4': suma = suma + 4 * pow(10,potencia); break;
+			case '5': suma = suma + 5 * pow(10,potencia); break;
+			case '6': suma = suma + 6 * pow(10,potencia); break;
+			case '7': suma = suma + 7 * pow(10,potencia); break;
+			case '8': suma = suma + 8 * pow(10,potencia); break;
+			case '9': suma = suma + 9 * pow(10,potencia); break;
+		}
+		x = x + 1;
+	}
+	int numero = suma;
+	return numero;
+}
+
+chair::chair(string _nombre, string _afiliacion, string _correo) : persona(_nombre,_afiliacion,_correo){
+	
 }
 

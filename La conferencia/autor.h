@@ -3,8 +3,7 @@
 
 # include <vector>
 
-# include "revisor.h"
-# include "articulo.h"
+# include "persona.h"
 
 using namespace std;
 
@@ -12,6 +11,7 @@ class autor : public persona{
 	public:
 		autor(string,string,string);
 		vector <string> crear_articulo();
+		
 };
 
 # endif

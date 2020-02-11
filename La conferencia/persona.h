@@ -1,6 +1,8 @@
 # ifndef PERSONA_H
 # define PERSONA_H
 
+# include <string>
+
 using namespace std;
 
 class persona{
@@ -9,8 +11,10 @@ class persona{
 		string afiliacion;
 		string correo;
 	public:
-		persona(string,string, string);
+		persona(string,string,string);
 		void mostrar_persona();
 		string get_nombre();
+	
 };
+
 # endif

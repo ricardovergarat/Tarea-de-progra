@@ -10,7 +10,6 @@ using namespace std;
 class chair : public persona{
 	public:
 		chair(string,string,string);
-		vector <string> crear_conferencia();
 };
 
 # endif
