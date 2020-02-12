@@ -66,3 +66,6 @@ void articulo::actualizar_aprobado(string respuesta){
 	aprobado = respuesta;
 }
 
+string articulo::get_titulo(){
+	return titulo;
+}

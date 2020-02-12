@@ -27,6 +27,7 @@ class articulo{
 		void actualizar_comentario(string,int);
 		void actualizar_nota(int,int);
 		void actualizar_aprobado(string);
+		string get_titulo();
 		
 };
 

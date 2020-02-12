@@ -45,7 +45,7 @@ chair::chair(string _nombre, string _afiliacion, string _correo) : persona(_nomb
 }
 
 vector <string> chair::crear_conferencia(){
-	string nombre,fecha_inicio,fecha_termino,pais,ciudad;
+	string nombre,fecha_inicio,fecha_termino,pais,ciudad,nombre_revisor;
 	cout << "Ingrese el nombre de la conferencia" << endl;
 	getline(cin,nombre);
 	cout << "Ingrese la fecha de inicio 	ejemplo: 23-03-2020" << endl;
@@ -56,12 +56,15 @@ vector <string> chair::crear_conferencia(){
 	getline(cin,pais);
 	cout << "Ingrese la ciudad" << endl;
 	getline(cin,ciudad);
+	cout << "Ingrese el nombre de un autor" << endl;
+	getline(cin,nombre_revisor);
 	vector <string> una_conferencia;
 	una_conferencia.push_back(nombre);
 	una_conferencia.push_back(fecha_inicio);
 	una_conferencia.push_back(fecha_termino);
 	una_conferencia.push_back(pais);
 	una_conferencia.push_back(ciudad);
+	una_conferencia.push_back(nombre_revisor);
 	return una_conferencia;
 }
 

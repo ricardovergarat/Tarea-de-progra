@@ -361,9 +361,94 @@ void actualizar_usuario(vector <conferencia> &lista,int tipo_usuario, vector <st
 	}
 }
 
+void mostrar_todas_las_conferencias(vector <conferencia> &lista){
+	int x = 0;
+	while ( x < lista.size() ){
+		cout << endl;
+		lista[x].mostrar_conferencia();
+		x = x + 1;
+	}
+}
+
+void mostrar_mis_datos(vector <conferencia> &lista,string nombre,int tipo_dato,int tipo_usuario){
+	// mis datos se refiere a una conferencia o un articulo
+	// 1 = buscar mis conferencias
+	// 1 para chair
+	// 2 para revisor
+	// 3 para autor
+	
+	
+	// 2 = buscar mis articulos
+	if (tipo_dato == 1){
+		if (tipo_usuario == 1){
+			int x = 0;
+			while ( x < lista.size() ){
+				int y = 0;
+				while ( y < lista[x].los_chair.size() ){
+					if ( nombre == lista[x].los_chair[y].get_nombre() ){
+						cout << lista[x].nombre << endl;
+						break;
+					}
+					y = y + 1;
+				}
+				x = x + 1;
+			}
+		}
+		if ( tipo_usuario == 2 ){
+			int x = 0;
+			while ( x < lista.size() ){
+				int y = 0;
+				while ( y < lista[x].los_revisores.size() ){
+					if ( nombre == lista[x].los_revisores[y].get_nombre() ){
+						cout << lista[x].nombre << endl;
+						break;
+					}
+					y = y + 1;
+				}
+				x = x + 1;
+			}
+		}
+		if ( tipo_usuario == 3){
+			int x = 0;
+			while ( x < lista.size() ){
+				int y = 0;
+				while ( y < lista[x].articulos_finales.size() ){
+					int z = 0;
+					while ( z < lista[x].articulos_finales[y].los_autores.size() ){
+						if ( nombre == lista[x].articulos_finales[y].los_autores[z].get_nombre() ){
+							cout << lista[x].nombre << endl;
+						}
+						z = z + 1;
+					}
+					y = y + 1;
+				}
+				x = x + 1;
+			}
+		}
+	}else{
+		int x = 0;
+		while ( x < lista.size() ){
+			int y = 0;
+			while ( y < lista[x].articulos_resividos.size() ){
+				int z = 0;
+				while ( z < lista[x].articulos_resividos[y].los_autores.size() ){
+					if ( nombre == lista[x].articulos_resividos[y].los_autores[z].get_nombre()  ){
+						cout << lista[x].articulos_resividos[y].get_titulo() << endl;
+						break;
+					}
+					z = z + 1;
+				}
+				y = y + 1;
+			}
+			x = x + 1;
+		}
+	}
+}
+
 void menu_chair(vector <conferencia> &lista){
 	vector <string> usuario = crear_usuario();
 	chair un_chair(usuario[0],usuario[1],usuario[2]);
+	actualizar_usuario(lista,1,usuario);
 	system("cls");
 	int opcion = 0;
 	while ( opcion != -1 ){
@@ -384,8 +469,8 @@ void menu_chair(vector <conferencia> &lista){
 			opcion = convertir_a_numero3(opcion_string);
 			switch (opcion){
 				case 1: cout << "opcion 1" << endl; break;
-				case 2: cout << "opcion 2" << endl; break;
-				case 3: cout << "opcion 3" << endl; break;
+				case 2: mostrar_todas_las_conferencias(lista); break;
+				case 3: mostrar_mis_datos(lista,usuario[0],1,1); break;
 				case 4: opcion = -1; system("cls"); break;
 				default: cout << "Esa opcion no existe" << endl;
 			}
