@@ -1,5 +1,7 @@
 # include <iostream>
 # include <vector>
+# include <math.h> // para convertir a numero
+# include <string.h> // para comparar string
 
 # include "conferencia.h"
 # include "chair.h"
@@ -263,6 +265,176 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	
 }
 
+bool es_numero3(string dato){
+	int x = 0;
+	while ( x < dato.size() ){
+		if ( isdigit(dato[x]) == 0 ){
+			return false;
+		}
+		x = x + 1;
+	}
+	return true;
+}
+
+int convertir_a_numero3(string dato){
+	int x = 0;
+	int suma = 0;
+	while ( x < dato.size() ){
+		int potencia = ( dato.size() - 1 ) - x;
+		switch (dato[x]){
+			case '0': suma = suma + 0 * pow(10,potencia); break;
+			case '1': suma = suma + 1 * pow(10,potencia); break;
+			case '2': suma = suma + 2 * pow(10,potencia); break;
+			case '3': suma = suma + 3 * pow(10,potencia); break;
+			case '4': suma = suma + 4 * pow(10,potencia); break;
+			case '5': suma = suma + 5 * pow(10,potencia); break;
+			case '6': suma = suma + 6 * pow(10,potencia); break;
+			case '7': suma = suma + 7 * pow(10,potencia); break;
+			case '8': suma = suma + 8 * pow(10,potencia); break;
+			case '9': suma = suma + 9 * pow(10,potencia); break;
+		}
+		x = x + 1;
+	}
+	int numero = suma;
+	return numero;
+}
+
+
+
+vector <string> crear_usuario(){
+	string nombre,afiliacion,correo;
+	cout << "Ingrese su nombre" << endl;
+	getline(cin,nombre);
+	cout << "Ingrese su afiliacion" << endl;
+	getline(cin,afiliacion);
+	cout << "Ingrese su correo" << endl;
+	getline(cin,correo);
+	vector <string> usuario;
+	usuario.push_back(nombre);
+	usuario.push_back(afiliacion);
+	usuario.push_back(correo);
+	return usuario;
+}
+
+void actualizar_usuario(vector <conferencia> &lista,int tipo_usuario, vector <string> usuario){
+	int x = 0;
+	while ( x < lista.size() ){
+		if (tipo_usuario == 1){
+			int y = 0;
+			while ( y < lista[x].los_chair.size() ){
+				if ( usuario[0] == lista[x].los_chair[y].get_nombre() ){
+					chair nuevo_chair(usuario[0],usuario[1],usuario[2]);
+					lista[x].los_chair[y] = nuevo_chair;
+					break;
+				}
+				y = y + 1;
+			}
+		}
+		if ( tipo_usuario == 2 ){
+			int y = 0;
+			while ( y < lista[x].los_revisores.size() ){
+				if ( usuario[0] == lista[x].los_revisores[y].get_nombre() ){
+					revisor nuevo_revisor(usuario[0],usuario[1],usuario[2]);
+					lista[x].los_revisores[y] = nuevo_revisor;
+					break;
+				}
+				y = y + 1;
+			}
+		}
+		if ( tipo_usuario == 3 ){
+			int y = 0;
+			while ( y < lista[x].articulos_resividos.size() ){
+				int z = 0;
+				while ( z < lista[x].articulos_resividos[y].los_autores.size() ){
+					if ( usuario[0] == lista[x].articulos_resividos[y].los_autores[z].get_nombre() ){
+						autor nuevo_autor(usuario[0],usuario[1],usuario[2]);
+						lista[x].articulos_resividos[y].los_autores[z] = nuevo_autor;
+						break;
+					}
+					z = z + 1;
+				}
+				y = y + 1;
+			}
+		}
+		
+		x = x + 1;
+	}
+}
+
+void menu_chair(vector <conferencia> &lista){
+	vector <string> usuario = crear_usuario();
+	chair un_chair(usuario[0],usuario[1],usuario[2]);
+	system("cls");
+	int opcion = 0;
+	while ( opcion != -1 ){
+		cout << endl;
+		cout << "Bienvenido chair" << endl;
+		cout << "¿Quq quiere hacer?" << endl;
+		cout << "1- Crear conferencia" << endl;
+		cout << "2- Mostrar todas las conferencias" << endl;
+		cout << "3- Mostrar mis conferencias" << endl;
+		cout << "4- Agregar chair" << endl;
+		cout << "5- Agregar revisor" << endl;
+		cout << "6- Aceptar un articulo" << endl;
+		cout << "7- Salir de la cuenta" << endl;
+		string opcion_string;
+		getline(cin,opcion_string);
+		bool numero = es_numero3(opcion_string);
+		if ( numero == true ){
+			opcion = convertir_a_numero3(opcion_string);
+			switch (opcion){
+				case 1: cout << "opcion 1" << endl; break;
+				case 2: cout << "opcion 2" << endl; break;
+				case 3: cout << "opcion 3" << endl; break;
+				case 4: opcion = -1; system("cls"); break;
+				default: cout << "Esa opcion no existe" << endl;
+			}
+		}else{
+			system("cls");
+			cout << "Ingreso algo no valido" << endl; 
+		}
+	}
+}
+
+void menu_usuarios(int opcion,vector <conferencia> &lista){
+	switch (opcion){
+		case 1: menu_chair(lista); break;
+		case 2: cout << "menu revisor" << endl;break;//Mmenu_revisor(lista); break;
+		case 3: cout << "menu autor" << endl;break;//menu_autor(lista); break;
+		case 4: break;
+		default: cout << "Esa opcion no existe" << endl;
+	}
+}
+
+int pedir_tipo_usuario(vector <conferencia> &lista){
+	cout << "Ingrese que tipo de usario es usted" << endl;
+	cout << "1- chair" << endl;
+	cout << "2- revisor" << endl;
+	cout << "3- autor" << endl;
+	cout << "4- salir del programa" << endl;
+	string opcion_string;
+	getline(cin,opcion_string);
+	bool numero = es_numero3(opcion_string);
+	int opcion = 0;
+	if ( numero == true ){
+		int opcion = convertir_a_numero3(opcion_string);
+		system("cls");
+		menu_usuarios(opcion,lista);
+		return opcion;
+	}else{
+		system("cls");
+		cout << "Ingreso algo no valido" << endl;
+		return 0;
+	}
+}
+
+void menu(vector <conferencia> &lista){
+	cout << "Deplegar menu" << endl;
+	int tipo_usuario = 0;
+	while ( tipo_usuario != 4 ){
+		tipo_usuario = pedir_tipo_usuario(lista);
+	}
+}
 
 
 int main(){
@@ -272,6 +444,10 @@ int main(){
 	agregar_conferencias_falsas(las_conferencias);
 	
 	cout << "fuera" << endl;
+	
+	menu(las_conferencias);
+	
+	cout << "El programa a terminado" << endl;
 	
 	
 	return 0;
