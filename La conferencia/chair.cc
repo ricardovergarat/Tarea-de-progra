@@ -56,7 +56,7 @@ vector <string> chair::crear_conferencia(){
 	getline(cin,pais);
 	cout << "Ingrese la ciudad" << endl;
 	getline(cin,ciudad);
-	cout << "Ingrese el nombre de un autor" << endl;
+	cout << "Ingrese el nombre de un revisor" << endl;
 	getline(cin,nombre_revisor);
 	vector <string> una_conferencia;
 	una_conferencia.push_back(nombre);

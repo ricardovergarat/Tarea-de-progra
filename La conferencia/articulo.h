@@ -6,6 +6,8 @@
 # include "autor.h"
 
 using namespace std;
+// la fecha de entrega no fue incluida por que fue dificil recuperar la fecha desde el sistema operativo, se dificulto debido al hacerlo en multiples sistemas operativos
+// la mayoria de los encapsulamientos (publicos) en los atributos no son nesesariamente asi, pero se dejo asi para evitar problemas
 
 class articulo{
 	private:
@@ -28,6 +30,7 @@ class articulo{
 		void actualizar_nota(int,int);
 		void actualizar_aprobado(string);
 		string get_titulo();
+		void version_final(string);
 		
 };
 

@@ -50,7 +50,7 @@ autor::autor(string _nombre, string _afiliacion, string _correo) : persona(_nomb
 }
 
 vector <string> autor::crear_articulo(){
-	string titulo,resumen,cuerpo,nombre;
+	string titulo,resumen,cuerpo,nombre_archivo;
 	cout << "Ingrese el nombre del articulo" << endl;
 	getline(cin,titulo);
 	cout << "Ingrese el resumen del articulo" << endl;
@@ -58,10 +58,10 @@ vector <string> autor::crear_articulo(){
 	bool existe = false;
 	while ( existe != true){
 		cout << "Ingrese el nombre del archivo 		ejemplo: 1.txt" << endl;
-		getline(cin,nombre);
-		existe = existe_archivo(nombre);
+		getline(cin,nombre_archivo);
+		existe = existe_archivo(nombre_archivo);
 	}
-	cuerpo = abrir_archivo(nombre);
+	cuerpo = abrir_archivo(nombre_archivo);
 	vector <string> un_articulo;
 	un_articulo.push_back(titulo);
 	un_articulo.push_back(resumen);
@@ -85,4 +85,16 @@ void autor::mostrar_notificaciones(){
 		cout << notificaciones[x] << endl;
 		x = x + 1;
 	}
+}
+
+string autor::convertir_a_final(){
+	string nombre_archivo,cuerpo;
+	bool existe = false;
+	while ( existe != true){
+		cout << "Ingrese el nombre del archivo 		ejemplo: 1.txt" << endl;
+		getline(cin,nombre_archivo);
+		existe = existe_archivo(nombre_archivo);
+	}
+	cuerpo = abrir_archivo(nombre_archivo);
+	return cuerpo;
 }

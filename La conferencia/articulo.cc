@@ -69,3 +69,7 @@ void articulo::actualizar_aprobado(string respuesta){
 string articulo::get_titulo(){
 	return titulo;
 }
+
+void articulo::version_final(string cuerpo_final){
+	cuerpo = cuerpo_final;
+}

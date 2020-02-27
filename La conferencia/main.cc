@@ -28,9 +28,15 @@ vector <int> notas_falsas(int nota1, int nota2, int nota3){
 }
 
 vector <articulo> articulos_falsos(vector <autor> &los_autores){
+	// creamos 3 vectors, uno para almacenar todos los articulos y retornalos
+	// uno para tener comentarios ya que supondremos que cada articulo tiene 3 comentarios al tener 3 revisores, es decir cada revisor puede comentar en el articulo
+	// y uno mas para la misma logica pero para las notas del articulo
 	vector <articulo> varios_articulos;
 	vector <string> comentarios;
 	vector <int> notas;
+	
+	// los cuerpo de los texto son cortos solo para tener algo en la base de datos, si creamos un articulo con el menu podemos obtener todo el texto de un archivo
+	// agregaremos titulo,resumen,cuerpo,comentarios,notas y si fue aprobado o no 
 	
 	comentarios = comentarios_falsos("me gustan los piratas","yo vi los piratas del caribe","no entendi un carajo pero el autor me pago");
 	notas = notas_falsas(3,5,3);
@@ -146,12 +152,15 @@ vector <articulo> articulos_falsos(vector <autor> &los_autores){
 	ar18.agregar_grupo_autores(los_autores[0],los_autores[4],los_autores[1]);
 	varios_articulos.push_back(ar18);
 	
+	// agregamos todos los datos del los articulo, entonces retornaremos el vector con todos estos articulos
 	
 	return varios_articulos;
 }
 
 
 void agregar_conferencias_falsas(vector <conferencia> & lista){
+	// esto simplemente es la creacion de una base de datos
+	
 	// crear conferencias
 	conferencia c("tegnologia para ciencias de la computacion","01-02-2020","099-02-2020","chile","talca");
 	conferencia c1("biologia en esfuerzo computacional","01-02-2020","099-02-2020","chile","talca");
@@ -185,6 +194,7 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	autor a4("Java","i dont know","Proximamente@gmail.com");
 	autor a5("Matlab","En .mat","Matematica@gmail.com");
 	
+	// pondremos los autores en un vector para agregarlos a los articulos que crearemos en las siguienes lineas (en la linea )
 	vector <autor> los_autores;
 	los_autores.push_back(a);
 	los_autores.push_back(a1);
@@ -198,8 +208,7 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	vector <articulo> los_articulos;
 	los_articulos = articulos_falsos(los_autores);
 	
-	
-	cout << "Termino la creacion" << endl;
+	// terminamos la creacion de todo, es decir chair,revisores,autores,articulos y conferencias
 	
 	c.agregar_grupo_chair(ch,ch5);
 	c.agregar_grupo_revisores(r3,r1,r);
@@ -250,7 +259,9 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	los_articulos[11].los_autores[0].notificar(c6.nombre,"ACEPTADO");
 	los_articulos[18].los_autores[0].notificar(c6.nombre,"ACEPTADO");
 	
-	cout << "Termino el completado" << endl;
+	// terminamos de agregar chair,revisores, y articulos a las conferencias (los autores fueron agregados en los articulos)
+	
+	// pondremos las conferencias en la base de datos
 	
 	lista.push_back(c);
 	lista.push_back(c1);
@@ -260,7 +271,7 @@ void agregar_conferencias_falsas(vector <conferencia> & lista){
 	lista.push_back(c5);
 	lista.push_back(c6);
 	
-	cout << "Final de la funcion" << endl;
+	// Final de la funcion, la base de datos no sera retornada ya que trabajamos con la direcion de memoria
 	
 	
 }
@@ -299,9 +310,29 @@ int convertir_a_numero3(string dato){
 	return numero;
 }
 
-
+int pedir_numero(int maximo){
+	cout << "Ingrese alguna opcion" << endl;
+	string opcion_string;
+	getline(cin,opcion_string);
+	bool numero = es_numero3(opcion_string);
+	if ( numero == true ){
+		int opcion = convertir_a_numero3(opcion_string);
+		if ( 1 <= opcion && opcion <= maximo ){
+			return opcion;
+		}else{
+			system("cls");
+			cout << "Ingreso una opcion que no existe" << endl;
+			return -1;
+		}
+	}else{
+		system("cls");
+		cout << "Ingreso algo no valido" << endl;
+		return -1;
+	}
+}
 
 vector <string> crear_usuario(){
+	// esto simula cuando una persona ingresa una cuenta, pero en lugar de pedir nombre de usario y comtraseña pide nombre,afiliacion y correo
 	string nombre,afiliacion,correo;
 	cout << "Ingrese su nombre" << endl;
 	getline(cin,nombre);
@@ -317,6 +348,9 @@ vector <string> crear_usuario(){
 }
 
 void actualizar_usuario(vector <conferencia> &lista,int tipo_usuario, vector <string> usuario){
+	// esta funcion esta por que para agregar chair,revisor o autor solo pide nombre, entonces si el usuario que ingresa fue puesto en alguna conferencia se le 
+	// ACTUALIZARAN sus datos, es decir su afiliacion y correo, este sistema se hizo asi por lo otros usuarios no nesesariamente saben su afiliacion y correo
+	// tambien si el usario cambio su afiliacion o correo esta funcion actualizara los daots en todas las conferencias en las que participe
 	int x = 0;
 	while ( x < lista.size() ){
 		if (tipo_usuario == 1){
@@ -361,6 +395,46 @@ void actualizar_usuario(vector <conferencia> &lista,int tipo_usuario, vector <st
 	}
 }
 
+bool pertenece_conferencia(conferencia una_conferencia,int tipo_usuario, string nombre){
+	// 1 para chair
+	// 2 para revisor
+	// 3 para autor
+	if ( tipo_usuario == 1 ){
+		int x = 0;
+		while ( x < una_conferencia.los_chair.size() ){
+			if ( nombre.compare( una_conferencia.los_chair[x].get_nombre() ) == 0 ){
+				return true;
+			}
+			x = x + 1;
+		}
+		return false;
+	}
+	if ( tipo_usuario == 2 ){
+		int x = 0;
+		while ( x < una_conferencia.los_revisores.size() ){
+			if ( nombre.compare( una_conferencia.los_revisores[x].get_nombre() ) == 0 ){
+				return true;
+			}
+			x = x + 1;
+		}
+		return false;
+	}
+	if ( tipo_usuario == 3 ){
+		int x = 0;
+		while ( x < una_conferencia.articulos_finales.size() ){
+			int y = 0;
+			while ( y < una_conferencia.articulos_finales[x].los_autores.size() ){
+				if ( nombre.compare( una_conferencia.articulos_finales[x].los_autores[y].get_nombre() ) == 0 ){
+					return true;
+				}
+				y = y + 1;
+			}
+			x = x + 1;
+		}
+		return false;
+	}
+}
+
 void mostrar_todas_las_conferencias(vector <conferencia> &lista){
 	int x = 0;
 	while ( x < lista.size() ){
@@ -370,78 +444,125 @@ void mostrar_todas_las_conferencias(vector <conferencia> &lista){
 	}
 }
 
-void mostrar_mis_datos(vector <conferencia> &lista,string nombre,int tipo_dato,int tipo_usuario){
-	// mis datos se refiere a una conferencia o un articulo
-	// 1 = buscar mis conferencias
+void mostrar_mis_conferencias(vector <conferencia> &lista, int tipo_usuario,string nombre){
+	// mostrara las conferencias dependiendo del tipo de usuario, y se mostrara si el NOMBRE aparece en una conferencia 
 	// 1 para chair
 	// 2 para revisor
 	// 3 para autor
-	
-	
-	// 2 = buscar mis articulos
-	if (tipo_dato == 1){
-		if (tipo_usuario == 1){
-			int x = 0;
-			while ( x < lista.size() ){
-				int y = 0;
-				while ( y < lista[x].los_chair.size() ){
-					if ( nombre == lista[x].los_chair[y].get_nombre() ){
-						cout << lista[x].nombre << endl;
-						break;
-					}
-					y = y + 1;
-				}
-				x = x + 1;
-			}
+	int x = 0;
+	while ( x < lista.size() ){
+		bool pertenece = pertenece_conferencia(lista[x],tipo_usuario,nombre);
+		if ( pertenece == true ){
+			cout << lista[x].nombre << endl;
 		}
-		if ( tipo_usuario == 2 ){
+		x = x + 1;
+	}
+}
+
+int selecion_conferencia(vector <conferencia> &lista, string nombre,int tipo_usuario,bool restringido){
+	cout << "Selecione una conferencia" << endl;
+	if ( restringido == true ){
+		// se entra aqui si selecionaremos una conferencia en la que si o si PARTICIPAMOS
+		int opcion = -1;
+		vector <int> indices;
+		while ( opcion < 0 ){
 			int x = 0;
+			int proyecion = 1;
+			vector <int> los_indices;
 			while ( x < lista.size() ){
-				int y = 0;
-				while ( y < lista[x].los_revisores.size() ){
-					if ( nombre == lista[x].los_revisores[y].get_nombre() ){
-						cout << lista[x].nombre << endl;
-						break;
-					}
-					y = y + 1;
+				bool pertenece = pertenece_conferencia(lista[x],tipo_usuario,nombre);
+				if ( pertenece == true ){
+					cout << proyecion << "- " << lista[x].nombre << endl;
+					proyecion = proyecion + 1;
+					los_indices.push_back(x);
 				}
 				x = x + 1;
 			}
+			if ( proyecion == 1 ){
+				// implica que no tuvo ninguna conferencia
+				// entonces retornaremos un -1 para que la siguien funcion (existe_errores) diga que hubo un error
+				return -1;
+			}
+			// implica que tiene 1 o mas conferencias
+			opcion = pedir_numero(los_indices.size());
+			opcion = opcion - 1;
+			indices = los_indices;
 		}
-		if ( tipo_usuario == 3){
+		return indices[opcion];
+	}else{
+		// aqui el usuario puede selecionar cualquier conferencias es decir, no esta RESTRINGIDO que conferencias mostrar
+		// sera usada para cuando un auto quiere enviar un articulo, es decir puede enviar un articulo a cualquier conferencia
+		int opcion = -1;
+		while ( opcion < 0 ){
 			int x = 0;
 			while ( x < lista.size() ){
-				int y = 0;
-				while ( y < lista[x].articulos_finales.size() ){
-					int z = 0;
-					while ( z < lista[x].articulos_finales[y].los_autores.size() ){
-						if ( nombre == lista[x].articulos_finales[y].los_autores[z].get_nombre() ){
-							cout << lista[x].nombre << endl;
-						}
-						z = z + 1;
-					}
-					y = y + 1;
-				}
+				cout << x + 1 << "- " << lista[x].nombre << endl;
 				x = x + 1;
 			}
+			opcion = pedir_numero(lista.size());
+		}
+		return opcion - 1;
+	}
+}
+
+bool existe_errores(int n){
+	if ( n == -1 ){
+		// implica que hubo un error
+		cout << "Usted no pertenece a ninguna conferencia" << endl;
+		return true;
+	if ( n == -2 ){
+		// implica que no es un autor principal
+		cout << "Usted no es el autor principal de ningun articulo" << endl;
+	}
+	}else{
+		return false;
+	}
+}
+
+int obtener_indice_revisor(conferencia una_conferencia,string nombre){
+	// nesesitamos esta funcion por que nesesitamos el indice para evaluar o comentar en un articulo
+	int x = 0;
+	while ( x < una_conferencia.los_revisores.size() ){
+		if ( nombre.compare( una_conferencia.los_revisores[x].get_nombre() ) == 0 ){
+			return x;
+		}
+		x = x + 1;
+	}
+}
+
+int selecionar_articulo(conferencia una_conferencia,int tipo_usuario,string nombre){
+	cout << "Selecione un articulo" << endl;
+	if ( tipo_usuario == 1 || tipo_usuario == 2){
+		int opcion = -1;
+		while( opcion < 0 ){
+			int x = 0;
+			while ( x < una_conferencia.articulos_resividos.size() ){
+				cout << x + 1 << "- " << una_conferencia.articulos_resividos[x].get_titulo() << endl;
+				x = x + 1;
+			}
+			opcion = pedir_numero( una_conferencia.articulos_resividos.size() );
 		}
 	}else{
-		int x = 0;
-		while ( x < lista.size() ){
-			int y = 0;
-			while ( y < lista[x].articulos_resividos.size() ){
-				int z = 0;
-				while ( z < lista[x].articulos_resividos[y].los_autores.size() ){
-					if ( nombre == lista[x].articulos_resividos[y].los_autores[z].get_nombre()  ){
-						cout << lista[x].articulos_resividos[y].get_titulo() << endl;
-						break;
-					}
-					z = z + 1;
+		// aqui seleciona un autor, y solo puede selecionar si es que es el autor principal es decir en un articulo ---> los_autores[0] == nombre del autor
+		int opcion = -1;
+		while ( opcion < 0 ){
+			int x = 0;
+			int proyecion = 1;
+			while ( x < una_conferencia.articulos_resividos.size() ){
+				if ( nombre.compare( una_conferencia.articulos_resividos[x].los_autores[0].get_nombre() ) == 0 ){
+					cout << proyecion << "- " << una_conferencia.articulos_resividos[x].get_titulo() << endl;
+					proyecion = proyecion + 1;
 				}
-				y = y + 1;
+				x = x + 1;
 			}
-			x = x + 1;
+			if ( proyecion == 1 ){
+				// implica que no es el autor principal de ningun articulo de la conferencia
+				return -2;
+			}
+			opcion = pedir_numero(proyecion - 1);
+			opcion = opcion - 1;
 		}
+		return opcion;
 	}
 }
 
@@ -460,34 +581,203 @@ void menu_chair(vector <conferencia> &lista){
 		cout << "3- Mostrar mis conferencias" << endl;
 		cout << "4- Agregar chair" << endl;
 		cout << "5- Agregar revisor" << endl;
-		cout << "6- Aceptar un articulo" << endl;
+		cout << "6- Aceptar o rechazar un articulo" << endl;
 		cout << "7- Salir de la cuenta" << endl;
-		string opcion_string;
-		getline(cin,opcion_string);
-		bool numero = es_numero3(opcion_string);
-		if ( numero == true ){
-			opcion = convertir_a_numero3(opcion_string);
-			switch (opcion){
-				case 1: cout << "opcion 1" << endl; break;
-				case 2: mostrar_todas_las_conferencias(lista); break;
-				case 3: mostrar_mis_datos(lista,usuario[0],1,1); break;
-				case 4: opcion = -1; system("cls"); break;
-				default: cout << "Esa opcion no existe" << endl;
+		opcion = pedir_numero(7);
+		switch (opcion){
+			case -1: opcion = 0; break; // entra aqui si al pedir no ingresa un numero o ingreso una opcion que no existe
+			case 1:{
+				cout << "crear conferencia" << endl;
+				vector <string> una_conferencia = un_chair.crear_conferencia();
+				conferencia nueva_conferencia(una_conferencia[0],una_conferencia[1],una_conferencia[2],una_conferencia[3],una_conferencia[0]);
+				revisor un_revisor(una_conferencia[5],"","");
+				nueva_conferencia.agregar_chair(un_chair);
+				nueva_conferencia.agregar_revisor(un_revisor);
+				lista.push_back(nueva_conferencia);
+				break;
 			}
-		}else{
-			system("cls");
-			cout << "Ingreso algo no valido" << endl; 
+			case 2: mostrar_todas_las_conferencias(lista); break;
+			case 3: mostrar_mis_conferencias(lista,1,usuario[0]); break;
+			case 4:{
+				int indice_conferencia = selecion_conferencia(lista,usuario[0],1,true);
+				bool error = existe_errores(indice_conferencia);
+				if ( error == true ){
+					cout << "Hubo un error" << endl;
+				}else{
+					cout << "Ingrese el nombre del nuevo chair" << endl;
+					string nombre;
+					getline(cin,nombre);
+					chair un_chair(nombre,"","");
+					lista[indice_conferencia].agregar_chair(un_chair);
+				}
+				break;
+			}
+			case 5:{
+				int indice_conferencia = selecion_conferencia(lista,usuario[0],1,true);
+				bool error = existe_errores(indice_conferencia);
+				if ( error == true ){
+					cout << "Hubo un error" << endl;
+				}else{
+					cout << "Ingrese el nombre del nuevo revisor" << endl;
+					string nombre;
+					getline(cin,nombre);
+					revisor un_revisor(nombre,"","");
+					lista[indice_conferencia].agregar_revisor(un_revisor);
+				}
+				break;
+			}
+			case 6:{
+				int indice_conferencia = selecion_conferencia(lista,usuario[0],1,true);
+				bool error = existe_errores(indice_conferencia);
+				if ( error == true ){
+					cout << "Hubo un error" << endl;
+				}else{
+					int indice_articulo = selecionar_articulo(lista[indice_conferencia],1,usuario[0]);
+					bool error2 = existe_errores(indice_articulo);
+					if ( error2 == true ){
+						cout << "Hubo un error" << endl;
+					}else{
+						string respuesta = un_chair.aceptar_o_rechazar();
+						lista[indice_conferencia].articulos_resividos[indice_articulo].actualizar_aprobado(respuesta);
+						if ( respuesta == "TRUE" ){
+							lista[indice_conferencia].agregar_articulo_final(lista[indice_conferencia].articulos_resividos[indice_articulo]);
+						}
+					}
+				}
+				break;
+			}
+			case 7: opcion = -1;system("cls"); break;
+		}
+	}
+}
+
+void menu_revisor(vector <conferencia> &lista){
+	vector <string> usuario;
+	usuario = crear_usuario();
+	revisor un_revisor(usuario[0],usuario[1],usuario[2]);
+	system("cls");
+	int opcion = 0;
+	while ( opcion != -1 ){
+		cout << endl; 
+		cout << "Bienvenido revisor" << endl;
+		cout << "¿Que quiere hacer?" << endl;
+		cout << "1- Mostrar todas las conferencias" << endl;
+		cout << "2- Mostrar mis conferencias" << endl;
+		cout << "3- Comentar un articulo" << endl;
+		cout << "4- Evaluar un articulo" << endl;
+		cout << "5- salir de la cuenta" << endl;
+		opcion = pedir_numero(5);
+		switch (opcion){
+			case -1: opcion = 0; break; // entra aqui si al pedir no ingresa un numero o ingreso una opcion que no existe
+			case 1: mostrar_todas_las_conferencias(lista); break;
+			case 2: mostrar_mis_conferencias(lista,2,usuario[0]); break;
+			case 3:{
+				int indice_conferencia = selecion_conferencia(lista,usuario[0],2,true);
+				bool error = existe_errores(indice_conferencia);
+				if ( error == true ){
+					cout << "Hubo un error" << endl;
+				}else{
+					int indice_articulo = selecionar_articulo(lista[indice_conferencia],2,usuario[0]);
+					bool error2 = existe_errores(indice_articulo);
+					if ( error2 == true ){
+						cout << "Hubo un error" << endl;
+					}else{
+						string comentario = un_revisor.comentar();
+						int indice_revisor = obtener_indice_revisor(lista[indice_conferencia],usuario[0]);
+						lista[indice_conferencia].articulos_resividos[indice_articulo].actualizar_comentario(comentario,indice_revisor);
+					}
+				}
+				break;
+			}
+			case 4:{
+				int indice_conferencia = selecion_conferencia(lista,usuario[0],2,true);
+				bool error = existe_errores(indice_conferencia);
+				if ( error == true ){
+					cout << "Hubo un error" << endl;
+				}else{
+					int indice_articulo = selecionar_articulo(lista[indice_conferencia],2,usuario[0]);
+					bool error2 = existe_errores(indice_articulo);
+					if ( error2 == true ){
+						cout << "Hubo un error" << endl;
+					}else{
+						int nota = un_revisor.evaluar();
+						int indice_revisor = obtener_indice_revisor(lista[indice_conferencia],usuario[0]);
+						lista[indice_conferencia].articulos_resividos[indice_articulo].actualizar_nota(nota,indice_revisor);
+					}
+				}
+				break;
+			}
+			case 5: opcion = -1;system("cls"); break;
+		}
+	}
+}
+
+void menu_autor(vector <conferencia> &lista){
+	vector <string> usuario;
+	usuario = crear_usuario();
+	autor un_autor(usuario[0],usuario[1],usuario[2]);
+	system("cls");
+	int opcion = 0;
+	while ( opcion != -1 ){
+		cout << endl;
+		cout << "Bienvenido autor" << endl;
+		cout << "¿Que quiere hacer?" << endl;
+		cout << "1- Mostrar todas las conferencias" << endl;
+		cout << "2- Mostrar mis conferencias" << endl;
+		cout << "3- Crear articulo" << endl;
+		cout << "4- Enviar articulo final" << endl;
+		cout << "5- salir de la cuenta" << endl;
+		opcion = pedir_numero(5);
+		switch (opcion){
+			case -1: opcion = 0; break; // entra aqui si al pedir no ingresa un numero o ingreso una opcion que no existe
+			case 1: mostrar_todas_las_conferencias(lista); break;
+			case 2: mostrar_mis_conferencias(lista,3,usuario[0]); break;
+			case 3:{
+				vector <string> datos_nuevo_articulo = un_autor.crear_articulo();
+				vector <string> comentarios = comentarios_falsos("", "", "");
+				vector <int> notas = notas_falsas(0, 0, 0);
+				articulo nuevo_articulo(datos_nuevo_articulo[0],datos_nuevo_articulo[1],datos_nuevo_articulo[2],comentarios,notas,"FALSE");
+				nuevo_articulo.agregar_autor(un_autor);
+				int indice_conferencia = selecion_conferencia(lista,usuario[0],3,false);
+				cout << indice_conferencia << endl;
+				bool error = existe_errores(indice_conferencia);
+				if ( error == true ){
+					cout << "Hubo un error" << endl;
+				}else{
+					lista[indice_conferencia].agregar_articulo(nuevo_articulo);
+					cout << "Se envio el articulo exitosamente" << endl;
+				}
+				break;
+			} cout << "crear articulo" << endl; break;
+			case 4:{
+				int indice_conferencia = selecion_conferencia(lista,usuario[0],3,true);
+				bool error = existe_errores(indice_conferencia);
+				if ( error == true ){
+					cout << "Hubo un error" << endl;
+				}else{
+					int indice_articulo = selecionar_articulo(lista[indice_conferencia],3,usuario[0]);
+					bool error2 = existe_errores(indice_articulo);
+					if ( error2 == true ){
+						cout << "Hubo un error" << endl;
+					}else{
+						string cuerpo_final = un_autor.convertir_a_final();
+						lista[indice_conferencia].articulos_resividos[indice_articulo].version_final(cuerpo_final);
+						lista[indice_conferencia].agregar_articulo_final( lista[indice_conferencia].articulos_resividos[indice_articulo] );
+					}
+				}
+				break;
+			}
+			case 5: opcion = -1; system("cls"); break;
 		}
 	}
 }
 
 void menu_usuarios(int opcion,vector <conferencia> &lista){
 	switch (opcion){
-		case 1: menu_chair(lista); break;
-		case 2: cout << "menu revisor" << endl;break;//Mmenu_revisor(lista); break;
-		case 3: cout << "menu autor" << endl;break;//menu_autor(lista); break;
-		case 4: break;
-		default: cout << "Esa opcion no existe" << endl;
+		case 1: system("cls");menu_chair(lista); break;
+		case 2: system("cls");menu_revisor(lista); break;
+		case 3: system("cls");menu_autor(lista); break;
+		case 4: system("cls"); break;
 	}
 }
 
@@ -497,30 +787,17 @@ int pedir_tipo_usuario(vector <conferencia> &lista){
 	cout << "2- revisor" << endl;
 	cout << "3- autor" << endl;
 	cout << "4- salir del programa" << endl;
-	string opcion_string;
-	getline(cin,opcion_string);
-	bool numero = es_numero3(opcion_string);
-	int opcion = 0;
-	if ( numero == true ){
-		int opcion = convertir_a_numero3(opcion_string);
-		system("cls");
-		menu_usuarios(opcion,lista);
-		return opcion;
-	}else{
-		system("cls");
-		cout << "Ingreso algo no valido" << endl;
-		return 0;
-	}
+	int opcion = pedir_numero(4);
+	menu_usuarios(opcion,lista);
+	return opcion;
 }
 
 void menu(vector <conferencia> &lista){
-	cout << "Deplegar menu" << endl;
 	int tipo_usuario = 0;
 	while ( tipo_usuario != 4 ){
 		tipo_usuario = pedir_tipo_usuario(lista);
 	}
 }
-
 
 int main(){
 	
@@ -528,9 +805,8 @@ int main(){
 	
 	agregar_conferencias_falsas(las_conferencias);
 	
-	cout << "fuera" << endl;
-	
 	menu(las_conferencias);
+	
 	
 	cout << "El programa a terminado" << endl;
 	

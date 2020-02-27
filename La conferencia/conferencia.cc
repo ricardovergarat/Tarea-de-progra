@@ -47,7 +47,11 @@ void conferencia::mostrar_sus_chair(){
 }
 
 void conferencia::agregar_revisor(revisor un_revisor){
-	los_revisores.push_back(un_revisor);
+	if ( los_revisores.size()  >= 3){
+		cout << "La conferencia ya tiene a sus tres revisores" << endl;
+	}else{
+		los_revisores.push_back(un_revisor);
+	}
 }
 
 void conferencia::agregar_grupo_revisores(revisor un_revisor1, revisor un_revisor2, revisor un_revisor3){

@@ -9,6 +9,7 @@
 # include "articulo.h"
 
 using namespace std;
+// creo que todos los atributos puede ser privados debido a el nuevo sistema implementado, pero se dejo en publico para eviat algunos cambio en el codigo principal
 
 class conferencia{
 	public:
