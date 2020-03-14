@@ -23,8 +23,7 @@ class conferencia{
 		vector <articulo> articulos_resividos; // aqui estan todos los articulos que envien los autores
 		vector <articulo> articulos_finales; // solo estan los articulos que fueron aprobados por UNO DE LOS CHAIR (no es nesesario que sean los dos)
 	public:
-		conferencia(string,string,string,string,string); // Usaremos este para la base de datos
-		conferencia(vector <string>); // Usaremos este en el menu
+		conferencia(vector <string>); // Lo hice asi para que fuera mas facil al momento de escribir el codigo
 		void mostrar_conferencia();
 		void agregar_chair(chair);
 		void agregar_grupo_chair(chair,chair); // solo 2 porque asi esta en el enunciado
