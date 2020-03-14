@@ -17,7 +17,16 @@ conferencia::conferencia(string _nombre, string _fecha_inicio, string _fecha_ter
 	ciudad = _ciudad;
 }
 
+conferencia::conferencia(vector <string> datos_conferencia) {
+	nombre = datos_conferencia[0];
+	fecha_inicio = datos_conferencia[1];
+	fecha_termino = datos_conferencia[2];
+	pais = datos_conferencia[3];
+	ciudad = datos_conferencia[4];
+}
+
 void conferencia::mostrar_conferencia(){
+	cout << "" << endl;
 	cout << "Nombre: " << nombre << endl;
 	cout << "Fecha de inicio: " << fecha_inicio << endl;
 	cout << "Fecha de termino: " << fecha_termino << endl;
@@ -90,8 +99,9 @@ void conferencia::mostrar_articulos_resividos(){
 
 void conferencia::agregar_articulo_final(articulo un_articulo){
 	if ( un_articulo.aprobado == "FALSE" ){
-		cout << "Este articulo no a sido aceptado en la conferencia: " << nombre << endl;
+		cout << "Este articulo aun no a sido aceptado en la conferencia: " << nombre << endl;
 	}else{
+		cout << "Su articlo a sido agregado exitosamente" << endl;
 		articulos_finales.push_back(un_articulo);
 	}
 }
@@ -99,6 +109,9 @@ void conferencia::agregar_articulo_final(articulo un_articulo){
 void conferencia::agregar_grupo_articulos_finales(articulo un_articulo1, articulo un_articulo2){
 	articulos_finales.push_back(un_articulo1);
 	articulos_finales.push_back(un_articulo2);
+	// La variable "nombre" de las siguintes dos lineas son el nombre de la conferencia
+	un_articulo1.los_autores[0].agregar_notificacion( "La conferencia: " + nombre + " a ACEPTADO su articulo: " + un_articulo1.get_titulo() );
+	un_articulo2.los_autores[0].agregar_notificacion( "La conferencia: " + nombre + " a ACEPTADO su articulo: " + un_articulo2.get_titulo() );
 }
 
 void conferencia::mostrar_articulos_finales(){
@@ -107,4 +120,8 @@ void conferencia::mostrar_articulos_finales(){
 		articulos_finales[x].mostrar_articulo();
 		x = x + 1;
 	}
+}
+
+string conferencia::get_nombre(){
+	return nombre;
 }
